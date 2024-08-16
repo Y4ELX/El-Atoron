@@ -50,6 +50,14 @@
         function calcular() {
             const volumen = parseFloat(document.getElementById("volumen").value);
 
+            document.getElementById("calcular").style.boxShadow = "none";
+            document.getElementById("calcular").style.transform = "translateY(0.9vh)";
+
+            setTimeout(() => {
+                document.getElementById("calcular").style.transform = "translateY(-0.45vh)";
+                document.getElementById("calcular").style.boxShadow = "0px 0.9vh 0px #b8ad9c";
+            }, 500);
+
             if (volumen) {
                 r = calcularRadio(volumen)
                 document.getElementById("radio").value = r.toFixed(2);
