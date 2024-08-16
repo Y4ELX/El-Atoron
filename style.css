@@ -1,7 +1,9 @@
 body{
     padding: 0px;
     margin: 0px;
+    overflow: hidden;
     user-select: none;
+    background-color: #ebe4d9;
 
 }
 
@@ -55,7 +57,7 @@ body{
     padding: 10vh;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 }
 
