@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <title>El atorón</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="principalDiv">
+        <div class="navbar">
+            <img src="img/logopng.png" class="logo" alt="">
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 90vh;">
+            <div class="panel">
+                <div style="display: flex; flex-direction: column; ">
+                    <p class="textoN">Volumen deseado en cm³</p>
+                    <input class="inputs" type="number" placeholder="Ej. 500" name="" id="volumen">
+
+                    <p class="textoN">Radio del envase</p>
+                    <input class="inputs" type="number" disabled="on" name="" id="radio">
+
+                    <p class="textoN">Altura del envase</p>
+                    <input class="inputs" type="number" disabled="on" name="" id="altura">
+
+                    <p class="textoN">Área del envase</p>
+                    <input class="inputs" type="number" disabled="on" name="" id="area">
+                </div>
+
+                <button onclick="calcular()" id="calcular" class="calcular">Calcular</button>
+            </div>
+        </div>
+
+        <!-- Contenedor para el gráfico -->
+        <div style="width: 80%; margin-top: 20px;">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        var r
+        var h
+        var area
+
+        function calcular() {
+            const volumen = parseFloat(document.getElementById("volumen").value);
+
+            if (volumen) {
+                r = calcularRadio(volumen)
+                document.getElementById("radio").value = r.toFixed(2);
+                console.log(r)
+
+                h = volumen / (Math.PI * r * r)
+                document.getElementById("altura").value = h.toFixed(2);
+                console.log(h)
+
+                
+                area = (Math.PI * r * r) + (Math.PI * r * h)
+                document.getElementById("area").value = area.toFixed(2);
+                console.log(h)
+            }
+        }
+
+        function calcularRadio(volumen) {
+
+            // Fórmula para calcular el radio
+            let r = Math.cbrt((2 * volumen) / (4 * Math.PI));
+
+            return r;
+        }
+
+    </script>
+</body>
+
+</html>
